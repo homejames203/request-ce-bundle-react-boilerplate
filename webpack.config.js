@@ -39,6 +39,10 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(jpg|png|svg)/,
+        use: 'file-loader'
+      },
     ],
   },
 
@@ -62,5 +66,13 @@ module.exports = {
 
     hot: true,
     // enable HMR on the server
+
+    overlay: true,
+    proxy: {
+      '/': {
+        target: 'http://localhost:9090',
+        headers: { 'X-From-Webpack-Proxy' : 'X-From-Webpack-Proxy' }
+      }
+    }
   },
 };
