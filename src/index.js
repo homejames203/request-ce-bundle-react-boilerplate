@@ -6,16 +6,29 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
+import { createHashHistory } from 'history';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+import App from './components/App';
+import reducers from './reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const history = createHashHistory();
+
+const store = createStore(
+  connectRouter(history)(combineReducers(reducers)),
+  composeEnhancers(applyMiddleware(routerMiddleware(history)))
+);
 
 const rootEl = document.getElementById('root');
 const render = Component =>
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Component store={store} history={history} />
     </AppContainer>,
     rootEl
   );
 
 render(App);
-if (module.hot) module.hot.accept('./App', () => render(App));
+if (module.hot) module.hot.accept('./components/App', () => render(App));
