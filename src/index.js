@@ -11,7 +11,7 @@ import { createHashHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import App from './components/App';
-import reducers from './reducers';
+import reducers from './redux/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createHashHistory();
