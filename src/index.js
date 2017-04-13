@@ -31,4 +31,8 @@ const render = Component =>
   );
 
 render(App);
-if (module.hot) module.hot.accept('./components/App', () => render(App));
+if (module.hot) {
+  module.hot.accept('./components/App', () => render(App));
+  module.hot.accept('./redux/reducers', () =>
+    store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
+}
