@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect as refetchConnect } from 'react-refetch';
 
-const Profile = ({ children, me }) => {
+export default ({ me }) => {
   if (me.pending) {
     return <div>Loading profile...</div>;
   } else if (me.rejected) {
@@ -12,8 +11,3 @@ const Profile = ({ children, me }) => {
     </div>
   }
 };
-
-const resolver = (props) => ({
-  me: bundle.apiLocation() + '/me'
-});
-export default refetchConnect(resolver)(Profile);

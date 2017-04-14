@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import Counter from '../containers/Counter';
 import Home from './Home';
-import Profile from './Profile';
+import Profile from '../containers/Profile';
 
 const App = ({ store, history }) => (
   <Provider store={store}>
