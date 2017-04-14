@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import Counter from './Counter';
+import Counter from '../containers/Counter';
 import Home from './Home';
 import Profile from './Profile';
 
