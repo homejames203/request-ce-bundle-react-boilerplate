@@ -12,7 +12,7 @@ import { reducer as formReducer } from 'redux-form';
 import { createHashHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
-import App from './components/App';
+import App from './containers/App';
 import reducers from './redux/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -34,7 +34,7 @@ const render = Component =>
 
 render(App);
 if (module.hot) {
-  module.hot.accept('./components/App', () => render(App));
+  module.hot.accept('./containers/App', () => render(App));
   module.hot.accept('./redux/reducers', () =>
     store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
 }

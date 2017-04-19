@@ -3,10 +3,10 @@ import { Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import Counter from '../containers/Counter';
-import Home from './Home';
-import Profile from '../containers/Profile';
-import Catalog from '../containers/Catalog';
+import Counter from './Counter';
+import Home from '../components/Home';
+import Profile from './Profile';
+import Catalog from './Catalog';
 
 const App = ({ store, history }) => (
   <Provider store={store}>
