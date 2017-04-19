@@ -87,8 +87,11 @@ module.exports = {
     overlay: true,
     proxy: {
       '/': {
-        target: 'http://localhost:9090',
-        headers: { 'X-From-Webpack-Proxy' : 'X-From-Webpack-Proxy' }
+        target: 'https://kinops.io',
+        headers: { 'X-From-Webpack-Proxy' : 'X-From-Webpack-Proxy' },
+        secure: false,
+        autoRewrite: true,
+        protocolRewrite: 'http'
       }
     }
   },
