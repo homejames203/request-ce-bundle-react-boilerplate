@@ -1,8 +1,43 @@
-import { connect } from 'react-refetch';
+import React from 'react';
+import { reduxForm } from 'redux-form';
 import Profile from '../components/Profile';
+import { actions } from '../redux/modules/profile';
 
-const refetchMapper = (props) => ({
-  me: `${bundle.apiLocation()}/me`
+export const stateMapper = state => ({
+  initialValues: state.profile
 });
 
-export default connect(refetchMapper)(Profile);
+export const dispatchMapper = {
+  fetchProfile: actions.fetchProfile,
+  updateProfile: actions.updateProfile
+};
+
+export const validate = values => {
+  return {};
+};
+
+export const onSubmit = (values, dispatch, props) => {
+  props.updateProfile(values).then(result => {
+    console.log(result.error ? 'Error updating profile.' : 'Profile was updated.');
+  });
+};
+
+@reduxForm(
+  {
+    form: 'profile',
+    fields: [ 'username', 'displayName', 'email' ],
+    validate,
+    onSubmit
+  },
+  stateMapper,
+  dispatchMapper
+)
+export default class Container extends React.Component {
+  componentWillMount() {
+    this.props.fetchProfile();
+  }
+
+  render() {
+    return <Profile { ...this.props } />
+  }
+};

@@ -7,6 +7,8 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
+import promiseMiddleware from 'redux-promise';
+import { reducer as formReducer } from 'redux-form';
 import { createHashHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
@@ -17,8 +19,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createHashHistory();
 
 const store = createStore(
-  connectRouter(history)(combineReducers(reducers)),
-  composeEnhancers(applyMiddleware(routerMiddleware(history)))
+  connectRouter(history)(combineReducers({ ...reducers, form: formReducer })),
+  composeEnhancers(applyMiddleware(routerMiddleware(history), promiseMiddleware))
 );
 
 const rootEl = document.getElementById('root');
