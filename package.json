@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "description": "Boilerplate for development with React and Kinetic Core",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --config webpack.development.js",
     "lint": "eslint src",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.production.js"
   },
   "author": "",
   "license": "ISC",
