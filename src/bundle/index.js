@@ -8,7 +8,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 // Importing libraries
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer as HotLoaderContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
@@ -21,7 +21,7 @@ import { createHashHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 // Importing bundle files
-import App from '../containers/App';
+import { AppContainer } from '../containers/AppContainer';
 import reducers from '../redux/reducers';
 
 // Preparing history and redux store using the 'history' and 'redux' libraries
@@ -36,21 +36,21 @@ const store = createStore(
 const rootEl = document.getElementById('root');
 const render = Component =>
   ReactDOM.render(
-    <AppContainer>
+    <HotLoaderContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Route path="/" component={Component}/>
         </ConnectedRouter>
       </Provider>
-    </AppContainer>,
+    </HotLoaderContainer>,
     rootEl
   );
-render(App);
+render(AppContainer);
 
 // Enable hot module replacement so that file changes are automatically
 // communicated to the browser when running in development mode
 if (module.hot) {
-  module.hot.accept('../containers/App', () => render(App));
+  module.hot.accept('../containers/AppContainer', () => render(AppContainer));
   module.hot.accept('../redux/reducers', () =>
     store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
 }

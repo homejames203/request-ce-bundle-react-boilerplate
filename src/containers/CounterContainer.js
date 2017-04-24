@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { actions } from '../redux/modules/counter';
-import Counter from '../components/Counter';
+import { Counter } from '../components/Counter';
 
 export const stateMapper = (state) => ({
   counter: state.counter
@@ -12,4 +12,4 @@ export const dispatchMapper = {
   double: actions.doubleCounter
 };
 
-export default connect(stateMapper, dispatchMapper)(Counter);
+export const CounterContainer = connect(stateMapper, dispatchMapper)(Counter);

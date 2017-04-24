@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default props =>
+export const Catalog = props =>
   <div>
     {JSON.stringify(props.kapp)}
   </div>

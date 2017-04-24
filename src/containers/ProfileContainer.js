@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import Profile from '../components/Profile';
+import { Profile } from '../components/Profile';
 import { actions } from '../redux/modules/profile';
 
 export const stateMapper = state => ({
@@ -32,7 +32,7 @@ export const onSubmit = (values, dispatch, props) => {
   stateMapper,
   dispatchMapper
 )
-export default class Container extends React.Component {
+export class ProfileContainer extends Component {
   componentWillMount() {
     this.props.fetchProfile();
   }

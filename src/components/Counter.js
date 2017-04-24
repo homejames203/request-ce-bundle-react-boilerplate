@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ counter, inc, dec, double }) =>
+export const Counter = ({ counter, inc, dec, double }) =>
   <h2>
     <button type="button" onClick={dec}>-</button>
     Counter: {counter}
