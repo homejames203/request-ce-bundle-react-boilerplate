@@ -14,43 +14,37 @@ import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
-import promiseMiddleware from 'redux-promise';
-import { reducer as formReducer } from 'redux-form';
 import { createHashHistory } from 'history';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 // Importing bundle files
 import { AppContainer } from '../containers/AppContainer';
-import reducers from '../redux/reducers';
+import { configureStore } from '../redux/store';
 
-// Preparing history and redux store using the 'history' and 'redux' libraries
+// Preparing browser history for the react router and redux store using the
+// 'history' library.  We are currently using the hash history implementation.
 const history = createHashHistory();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  connectRouter(history)(combineReducers({ ...reducers, form: formReducer })),
-  composeEnhancers(applyMiddleware(routerMiddleware(history), promiseMiddleware))
-);
+// Use the 'configureStore' helper to initialize our redux store.
+const store = configureStore(history);
 
-// Rendering the application
-const rootEl = document.getElementById('root');
-const render = Component =>
+// Create a render function that takes the root component of our application
+// (AppContainer) and wraps it the router, redux, and hot loader components.
+// This is done in a helper function because we want to call this render helper
+// when new code is compiled in dev mode.
+const render = () =>
   ReactDOM.render(
     <HotLoaderContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Route path="/" component={Component}/>
+          <Route path="/" component={AppContainer}/>
         </ConnectedRouter>
       </Provider>
     </HotLoaderContainer>,
-    rootEl
-  );
-render(AppContainer);
+    document.getElementById('root'));
+
+// Trigger the initial render of our application.
+render();
 
 // Enable hot module replacement so that file changes are automatically
 // communicated to the browser when running in development mode
-if (module.hot) {
-  module.hot.accept('../containers/AppContainer', () => render(AppContainer));
-  module.hot.accept('../redux/reducers', () =>
-    store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
-}
+if (module.hot)
+  module.hot.accept('../containers/AppContainer', render);
