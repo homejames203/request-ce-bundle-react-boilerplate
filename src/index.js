@@ -17,8 +17,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createHashHistory } from 'history';
 
 // Importing bundle files
-import { AppContainer } from '../containers/AppContainer';
-import { configureStore } from '../redux/store';
+import { AppContainer } from './containers/AppContainer';
+import { configureStore } from './redux/store';
 
 // Preparing browser history for the react router and redux store using the
 // 'history' library.  We are currently using the hash history implementation.
@@ -47,4 +47,4 @@ render();
 // Enable hot module replacement so that file changes are automatically
 // communicated to the browser when running in development mode
 if (module.hot)
-  module.hot.accept('../containers/AppContainer', render);
+  module.hot.accept('./containers/AppContainer', render);

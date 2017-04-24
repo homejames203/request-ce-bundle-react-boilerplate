@@ -8,7 +8,7 @@ var webpack = require('webpack');
 var config = require('./config');
 
 module.exports = {
-  entry: './src/bundle/index.production.js',
+  entry: './src/index.production.js',
 
   output: {
     filename: 'bundle.js',
