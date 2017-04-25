@@ -15,9 +15,9 @@ export const AppContainer = () =>
       <li><Link to="/catalog">Catalog</Link></li>
       <li><Link to="/profile">Profile</Link></li>
     </ul>
-    <hr/>
+    <hr />
     <Route exact path="/" component={Home} />
-    <Route path="/counter" component={CounterContainer}/>
-    <Route path="/catalog" component={CatalogContainer}/>
-    <Route path="/profile" component={ProfileContainer}/>
+    <Route path="/counter" component={CounterContainer} />
+    <Route path="/catalog" component={CatalogContainer} />
+    <Route path="/profile" component={ProfileContainer} />
   </div>;

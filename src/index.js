@@ -45,7 +45,7 @@ const render = () =>
     <HotLoaderContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Route path="/" component={AppContainer}/>
+          <Route path="/" component={AppContainer} />
         </ConnectedRouter>
       </Provider>
     </HotLoaderContainer>,

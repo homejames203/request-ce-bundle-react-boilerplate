@@ -7,12 +7,12 @@ import React from 'react';
 
 const filterProps = props => props;
 
-const Field = (props) =>
+const Field = props =>
   <div>
-    <input type={props.type} { ...filterProps(props.controls) } />
+    <input type={props.type} {...filterProps(props.controls)} />
   </div>;
 
-export const Profile = (props) =>
+export const Profile = props =>
   <form onSubmit={props.handleSubmit} noValidate>
     <div>
       <label htmlFor="username">Username</label>

@@ -4,20 +4,19 @@ import { Profile } from '../components/Profile';
 import { actions } from '../redux/modules/profile';
 
 export const stateMapper = state => ({
-  initialValues: state.profile
+  initialValues: state.profile,
 });
 
 export const dispatchMapper = {
   fetchProfile: actions.fetchProfile,
-  updateProfile: actions.updateProfile
+  updateProfile: actions.updateProfile,
 };
 
-export const validate = values => {
-  return {};
-};
+export const validate = () => ({});
 
 export const onSubmit = (values, dispatch, props) => {
-  props.updateProfile(values).then(result => {
+  props.updateProfile(values).then((result) => {
+    // eslint-disable-next-line no-console
     console.log(result.error ? 'Error updating profile.' : 'Profile was updated.');
   });
 };
@@ -25,12 +24,12 @@ export const onSubmit = (values, dispatch, props) => {
 @reduxForm(
   {
     form: 'profile',
-    fields: [ 'username', 'displayName', 'email' ],
+    fields: ['username', 'displayName', 'email'],
     validate,
-    onSubmit
+    onSubmit,
   },
   stateMapper,
-  dispatchMapper
+  dispatchMapper,
 )
 export class ProfileContainer extends Component {
   componentWillMount() {
@@ -38,6 +37,6 @@ export class ProfileContainer extends Component {
   }
 
   render() {
-    return <Profile { ...this.props } />
+    return <Profile {...this.props} />;
   }
-};
+}

@@ -15,7 +15,10 @@
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/no-render-return-value": 0,
+    "import/prefer-default-export": 0
   },
   "plugins": [
     "react"

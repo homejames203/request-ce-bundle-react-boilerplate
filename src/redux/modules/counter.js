@@ -13,7 +13,7 @@ export const actions = {
 export const defaultState = 0;
 
 const reducer = (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case types.INCREMENT_COUNTER: return state + 1;
     case types.DECREMENT_COUNTER: return state - 1;
     case types.DOUBLE_COUNTER: return state * 2;
