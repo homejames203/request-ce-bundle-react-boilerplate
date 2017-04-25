@@ -9,6 +9,8 @@ var config = require('./config');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
+    'isomorphic-fetch',
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:'+config.localPort,
     'webpack/hot/only-dev-server',

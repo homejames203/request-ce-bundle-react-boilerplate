@@ -8,7 +8,11 @@ var webpack = require('webpack');
 var config = require('./config');
 
 module.exports = {
-  entry: './src/index.production.js',
+  entry: [
+    'babel-polyfill',
+    'isomorphic-fetch',
+    './src/index.production.js',
+  ],
 
   output: {
     filename: 'bundle.js',
