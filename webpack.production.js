@@ -1,10 +1,4 @@
-/**
- * README -
- */
-
-var path = require('path');
 var webpack = require('webpack');
-
 var config = require('./config');
 
 module.exports = {
@@ -13,19 +7,7 @@ module.exports = {
     'isomorphic-fetch',
     './src/index.production.js',
   ],
-
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
-
   devtool: 'source-map',
-
-  module: {
-    rules: config.loaderRules
-  },
-
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,

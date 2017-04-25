@@ -1,10 +1,4 @@
-/**
- * README -
- */
-
-var path = require('path');
 var webpack = require('webpack');
-
 var config = require('./config');
 
 module.exports = {
@@ -16,25 +10,12 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/index.js',
   ],
-
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/static/'
-  },
-
   devtool: 'inline-source-map',
-
-  module: {
-    rules: config.loaderRules
-  },
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
-
   devServer: {
     host: 'localhost',
     port: config.localPort,
