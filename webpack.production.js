@@ -1,3 +1,4 @@
+/* eslint-disable */
 var webpack = require('webpack');
 var config = require('./config');
 
