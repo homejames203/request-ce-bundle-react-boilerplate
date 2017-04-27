@@ -2,6 +2,9 @@
 var webpack = require('webpack');
 var config = require('./config');
 
+console.log('Kinetic Request CE is running at',
+  config.kineticWebserver);
+
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -20,7 +23,6 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: config.localPort,
-    historyApiFallback: true,
     hot: true,
     overlay: true,
     proxy: {
