@@ -40,7 +40,7 @@ const rootElement = document.getElementById('root');
 // with the router, redux store, and hot module loader components.  We want this
 // defined as a function because we want to be able to call it once for the
 // initial page load and again when code changes are detected (see below).
-const render = () =>
+const render = () => {
   ReactDOM.render(
     <HotLoaderContainer>
       <Provider store={store}>
@@ -50,6 +50,7 @@ const render = () =>
       </Provider>
     </HotLoaderContainer>,
     rootElement);
+};
 
 // Trigger the initial render of our application.
 render();
