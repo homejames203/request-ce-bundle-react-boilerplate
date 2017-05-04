@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const PROFILE_ENDPOINT = bundle.apiLocation() + '/me';
+import { fetchProfile, putProfile } from '../../helpers/profileRequest';
 
 export const types = {
   FETCH_PROFILE: 'FETCH_PROFILE',
@@ -10,16 +8,18 @@ export const types = {
 export const actions = {
   fetchProfile: () => ({
     type: types.FETCH_PROFILE,
-    payload: axios.get(PROFILE_ENDPOINT)
+    payload: fetchProfile(),
   }),
-  updateProfile: (profile) => ({
+  updateProfile: profile => ({
     type: types.UPDATE_PROFILE,
-    payload: axios.put(PROFILE_ENDPOINT, profile)
+    payload: putProfile(profile),
   }),
 };
 
-const reducer = (state = {}, action) => {
-  switch(action.type) {
+export const defaultState = {};
+
+const reducer = (state = defaultState, action) => {
+  switch (action.type) {
     case types.FETCH_PROFILE:
       return action.payload.data;
     case types.UPDATE_PROFILE:
