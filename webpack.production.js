@@ -1,27 +1,14 @@
-/**
- * README -
- */
-
-var path = require('path');
+/* eslint-disable */
 var webpack = require('webpack');
-
 var config = require('./config');
 
 module.exports = {
-  entry: './src/bundle/index.production.js',
-
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
-
+  entry: [
+    'babel-polyfill',
+    'isomorphic-fetch',
+    './src/index.production.js',
+  ],
   devtool: 'source-map',
-
-  module: {
-    rules: config.loaderRules
-  },
-
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,

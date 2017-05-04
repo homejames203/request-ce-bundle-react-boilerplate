@@ -1,13 +1,18 @@
 import React from 'react';
 
+// TODO: Currently redux form is passing props that are not valid for react elememts,
+// react has since started to complain about these props when they are added to things
+// like <input />.  filterProps should filter out the props that are not valid to be
+// spread onto the <input /> element.
+
 const filterProps = props => props;
 
-const Field = (props) =>
+const Field = props =>
   <div>
-    <input type={props.type} { ...filterProps(props.controls) } />
+    <input type={props.type} {...filterProps(props.controls)} />
   </div>;
 
-export default (props) =>
+export const Profile = props =>
   <form onSubmit={props.handleSubmit} noValidate>
     <div>
       <label htmlFor="username">Username</label>
