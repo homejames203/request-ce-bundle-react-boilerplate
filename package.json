@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "description": "Boilerplate for development with React and Kinetic Core",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dashboard -c magenta -- webpack-dev-server",
     "lint": "eslint src",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "test": "jest",
+    "test:watch": "jest --watch --notify"
   },
   "author": "",
   "license": "ISC",
@@ -32,24 +34,39 @@
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "axios-mock-adapter": "^1.8.1",
+    "babel-jest": "^19.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.23.0",
     "bootstrap": "^3.3.7",
     "connected-react-router": "^4.1.0",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "eslint-plugin-jest": "^19.0.1",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^19.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "3.0.0-beta.6",
     "react-redux": "^5.0.4",
     "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1",
+    "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
     "redux-form": "5.3.4",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "regenerator-runtime": "^0.10.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
