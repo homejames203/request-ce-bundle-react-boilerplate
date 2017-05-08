@@ -5,7 +5,7 @@
     "react"
   ],
   "plugins": [
-    "react-hot-loader/babel", "transform-decorators-legacy", "jest"
+    "react-hot-loader/babel", "transform-decorators-legacy"
   ],
   "env": {
     "test": {
