@@ -13,7 +13,7 @@ const props = {
   },
 };
 
-describe('Profile component', () => {
+describe('<Profile />', () => {
   test('verify snapshot', () => {
     const component = shallow(<Profile {...props} />);
     const tree = toJson(component);
