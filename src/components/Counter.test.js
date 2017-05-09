@@ -36,6 +36,7 @@ describe('<Counter />', () => {
 
     test('should call the "dec" prop function when clicked', () => {
       button.simulate('click');
+
       expect(props.dec).toBeCalled();
     });
 
