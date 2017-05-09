@@ -1,10 +1,5 @@
-/**
- * README - ...
- */
-
 module.exports = {
-  // SETTINGS - These will likely require modification for every project.
   bundleName: 'react-bundle-template',
-  kineticWebserver: 'https://kinops.io',
+  kineticWebserver: 'https://myapp.mycompany.com',
   localPort: 3000,
 };

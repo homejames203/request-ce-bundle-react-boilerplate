@@ -27,6 +27,8 @@ bundle deployed.
   a *dist* directory with all of the static files necessary to deploy the
   project)
 * `yarn add LIBRARY` will install a library and update the *package.json* file.
+* `yarn test` will run all of the test cases one time.
+* `yarn test:watch` will run test cases each time changes are detected in the source files.
 
 ## Deploying into Production Mode
 In order to expose the project to others, the static files will need to be
