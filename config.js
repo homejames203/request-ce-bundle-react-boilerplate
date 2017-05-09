@@ -1,5 +1,5 @@
 module.exports = {
-  bundleName: 'react-bundle-template',
+  bundleName: 'react-boilerplate',
   kineticWebserver: 'https://myapp.mycompany.com',
   localPort: 3000,
 };
