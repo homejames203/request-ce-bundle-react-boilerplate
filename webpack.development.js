@@ -1,6 +1,7 @@
 /* eslint-disable */
 var webpack = require('webpack');
 var config = require('./config');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 console.log('Kinetic Request CE is running at',
   config.kineticWebserver);
@@ -19,6 +20,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new DashboardPlugin(),
   ],
   devServer: {
     host: 'localhost',
