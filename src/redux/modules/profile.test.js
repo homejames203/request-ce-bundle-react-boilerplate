@@ -5,7 +5,7 @@ import reducer, { actions, defaultState, types } from './profile';
 // Used to mimic what happens when redux-promise processes the action.
 const resolvePromiseToPayload = action => {
   return action.payload.then(profile => action.payload = { data: profile });
-}
+};
 
 describe('profile redux module', () => {
   describe('action creators', () => {
@@ -30,7 +30,7 @@ describe('profile redux module', () => {
     test('FETCH_PROFILE populates the profile', () => {
       const action = actions.fetchProfile();
       expect.assertions(2);
-      resolvePromiseToPayload(action)
+      resolvePromiseToPayload(action);
       return action.payload.then(() => {
         expect(action.payload.data.displayName).toBeDefined();
         expect(reducer(defaultState, action)).toBe(action.payload.data);
@@ -41,7 +41,7 @@ describe('profile redux module', () => {
       const result = { displayName: 'test' };
       const action = actions.updateProfile(result);
       expect.assertions(2);
-      resolvePromiseToPayload(action)
+      resolvePromiseToPayload(action);
       return action.payload.then(() => {
         expect(action.payload.data.user.displayName).toBeDefined();
         expect(reducer(defaultState, action)).toBe(action.payload.data.user);
