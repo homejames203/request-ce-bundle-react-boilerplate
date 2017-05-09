@@ -1,7 +1,7 @@
 {
-  "name": "request-ce-bundle-react",
+  "name": "request-ce-bundle-react-boilerplate",
   "version": "0.0.0",
-  "description": "Boilerplate for development with React and Kinetic Core",
+  "description": "Boilerplate bundle for development with React and Kinetic Core",
   "scripts": {
     "start": "webpack-dashboard -c magenta -- webpack-dev-server",
     "lint": "eslint src",
@@ -12,7 +12,7 @@
     "test:watch": "jest --watch --notify"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
