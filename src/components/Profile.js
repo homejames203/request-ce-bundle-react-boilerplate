@@ -1,15 +1,22 @@
 import React from 'react';
+import { Seq, Set } from 'immutable';
 
-// TODO: Currently redux form is passing props that are not valid for react elememts,
-// react has since started to complain about these props when they are added to things
-// like <input />.  filterProps should filter out the props that are not valid to be
-// spread onto the <input /> element.
+const INPUT_PROPS =
+  Set(['name', 'onBlur', 'onChange', 'onDragStart', 'onDrop', 'onFocus', 'value']);
 
-const filterProps = props => props;
+// Redux form passes in several props that are not valid for react 'input'
+// elements. React has since started to print warnings about these props so the
+// helper below is used to filter out props that react will complain about.
+const filterProps = props =>
+  Seq(props).filter((value, key) => INPUT_PROPS.contains(key)).toJS();
 
 const Field = props =>
   <div>
-    <input type={props.type} {...filterProps(props.controls)} />
+    <input
+      {...filterProps(props.controls)}
+      type={props.type}
+      value={props.controls.value || ''}
+    />
   </div>;
 
 export const Profile = props =>
