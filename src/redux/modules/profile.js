@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { bundle } from '../../lib/kinetic-core';
 
-const PROFILE_ENDPOINT = `${window.bundle.apiLocation()}/me`;
+const PROFILE_ENDPOINT = `${bundle.apiLocation()}/me`;
 
 export const types = {
   FETCH_PROFILE: 'FETCH_PROFILE',

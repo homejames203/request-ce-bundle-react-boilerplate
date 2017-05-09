@@ -1,8 +1,9 @@
 import { connect } from 'react-refetch';
+import { bundle } from '../lib/kinetic-core';
 import { Catalog } from '../components/Catalog';
 
 export const refetchMapper = () => ({
-  kapp: `${window.bundle.apiLocation()}/kapps/${window.bundle.kappSlug()}?include=forms`,
+  kapp: `${bundle.apiLocation()}/kapps/${bundle.kappSlug()}?include=forms`,
 });
 
 export const CatalogContainer = connect(refetchMapper)(Catalog);
