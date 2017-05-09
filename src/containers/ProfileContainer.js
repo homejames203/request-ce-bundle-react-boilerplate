@@ -15,7 +15,7 @@ export const dispatchMapper = {
 export const validate = () => ({});
 
 export const onSubmit = (values, dispatch, props) => {
-  props.updateProfile(values).then((result) => {
+  props.updateProfile(values).then(result => {
     // eslint-disable-next-line no-console
     console.log(result.error ? 'Error updating profile.' : 'Profile was updated.');
   });

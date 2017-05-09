@@ -4,7 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import reducers from './reducers';
 
-export const configureStore = (history) => {
+export const configureStore = history => {
   // To enable the redux dev tools in the browser we need to conditionally use a
   // special compose method, below we are looking for that and if it does not
   // exist we use the build-in redux 'compose' method.
