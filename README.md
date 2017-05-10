@@ -1,11 +1,11 @@
-# request-ce-bundle-react
+# request-ce-bundle-react-boilerplate
 
 This is a boilerplate project for building Kinetic Request CE client side
 bundles in React.
 
 You will need to have nodejs and yarn (a nodejs package manager) running
 locally, and an instance of Kinetic Request CE running with the
-[request-ce-bundle-webpack](https://github.com/kineticdata/request-ce-bundle-webpack)
+[request-ce-bundle-webpack](https://github.com/KineticCommunity/request-ce-bundle-webpack)
 bundle deployed.
 
 ## Quickstart
