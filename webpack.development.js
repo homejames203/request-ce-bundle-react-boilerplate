@@ -1,6 +1,7 @@
 /* eslint-disable */
+var optionalRequire = require('optional-require')(require);
 var webpack = require('webpack');
-var config = require('./config');
+var config = optionalRequire('./config.override') || require('./config');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 
 console.log('Kinetic Request CE is running at',
