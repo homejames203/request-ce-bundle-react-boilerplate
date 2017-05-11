@@ -1,11 +1,12 @@
 jest.mock('../../helpers/profileRequest');
 
+// eslint-disable-next-line import/first
 import reducer, { actions, defaultState, types } from './profile';
 
 // Used to mimic what happens when redux-promise processes the action.
-const resolvePromiseToPayload = action => {
-  return action.payload.then(profile => action.payload = { data: profile });
-};
+const resolvePromiseToPayload = action =>
+  // eslint-disable-next-line no-param-reassign
+  action.payload.then(profile => { action.payload = { data: profile }; });
 
 describe('profile redux module', () => {
   describe('action creators', () => {
@@ -45,7 +46,7 @@ describe('profile redux module', () => {
       return action.payload.then(() => {
         expect(action.payload.data.user.displayName).toBeDefined();
         expect(reducer(defaultState, action)).toBe(action.payload.data.user);
-      });;
+      });
     });
   });
 });

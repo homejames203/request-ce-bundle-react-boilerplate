@@ -16,8 +16,8 @@ describe('counter redux module', () => {
   });
 
   describe('reducers', () => {
-    test('reducer initializes with default state', () =>
-      expect(reducer(undefined, {})).toEqual(defaultState)
+    test('reducer initializes with default state',
+      () => expect(reducer(undefined, {})).toEqual(defaultState),
     );
 
     test('INCREMENT_COUNTER increments the count', () => {

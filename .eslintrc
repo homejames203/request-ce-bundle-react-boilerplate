@@ -5,10 +5,14 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:jest/recommended"
+  ],
   "rules": {
     "no-confusing-arrow": 0,
     "no-else-return": 0,
@@ -18,6 +22,6 @@
     "import/prefer-default-export": 0
   },
   "plugins": [
-    "react"
+    "react", "jest"
   ]
 }

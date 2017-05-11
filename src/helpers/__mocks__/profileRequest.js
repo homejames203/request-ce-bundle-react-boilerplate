@@ -4,13 +4,13 @@ export const mockUser = {
   enabled: true,
   preferredLocale: null,
   spaceAdmin: true,
-  username: 'matt.raykowski@kineticdata.com'
+  username: 'matt.raykowski@kineticdata.com',
 };
 
 export const fetchProfile = () => new Promise(
-  (resolve, reject) => process.nextTick(() => resolve(mockUser))
+  resolve => process.nextTick(() => resolve(mockUser)),
 );
 
 export const putProfile = profile => new Promise(
-  (resolve, reject) => process.nextTick(() => resolve({user: {...mockUser, ...profile}}))
+  resolve => process.nextTick(() => resolve({ user: { ...mockUser, ...profile } })),
 );

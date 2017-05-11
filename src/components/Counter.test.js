@@ -13,7 +13,7 @@ describe('<Counter />', () => {
       dec: jest.fn(),
       inc: jest.fn(),
       double: jest.fn(),
-      counter: 0
+      counter: 0,
     };
     component = shallow(<Counter {...props} />);
   });
@@ -41,7 +41,7 @@ describe('<Counter />', () => {
     });
 
     test('should have "-" as a label', () => {
-      expect(button.text()).toEqual('-')
+      expect(button.text()).toEqual('-');
     });
   });
 
@@ -62,7 +62,7 @@ describe('<Counter />', () => {
     });
 
     test('should have "+" as a label', () => {
-      expect(button.text()).toEqual('+')
+      expect(button.text()).toEqual('+');
     });
   });
 
@@ -83,7 +83,7 @@ describe('<Counter />', () => {
     });
 
     test('should have "* 2" as a label', () => {
-      expect(button.text()).toEqual('* 2')
+      expect(button.text()).toEqual('* 2');
     });
   });
 });
