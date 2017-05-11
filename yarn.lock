@@ -4867,6 +4867,16 @@ react-hot-loader@3.0.0-beta.6:
     redbox-react "^1.2.5"
     source-map "^0.4.4"
 
+react-kinetic-core@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.1.2.tgz#2c6517e7d33caecac6c2d6762547c58aabab15fb"
+  dependencies:
+    axios "^0.16.1"
+    react "^15.5.4"
+    react-dom "^15.5.4"
+    react-redux "^5.0.4"
+    redux "^3.6.0"
+
 react-lazy-cache@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-lazy-cache/-/react-lazy-cache-3.0.1.tgz#0dc64d38df1767ef77678c5c94190064cb11b0cd"

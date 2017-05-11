@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { bundle } from 'react-kinetic-core';
 
-const PROFILE_ENDPOINT = `${window.bundle.apiLocation()}/me`;
+const PROFILE_ENDPOINT = `${bundle.apiLocation()}/me`;
 
 export const fetchProfile = () => axios.get(PROFILE_ENDPOINT);
 export const putProfile = profile => axios.put(PROFILE_ENDPOINT, profile);

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createHashHistory } from 'history';
 
+import './globals';
 import { AppContainer } from './containers/AppContainer';
 import { configureStore } from './redux/store';
 
