@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { bundle } from '../../lib/kinetic-core';
+import { bundle } from 'react-kinetic-core';
 
 const PROFILE_ENDPOINT = `${bundle.apiLocation()}/me`;
 

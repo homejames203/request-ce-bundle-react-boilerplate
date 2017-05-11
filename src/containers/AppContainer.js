@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/modal.scss';
+import 'react-kinetic-core/styles/modal.scss';
 import { CatalogContainer } from './CatalogContainer';
 import { CounterContainer } from './CounterContainer';
 import { ProfileContainer } from './ProfileContainer';

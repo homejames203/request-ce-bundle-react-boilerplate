@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CoreFormModal } from '../lib/kinetic-core';
+import { CoreFormModal } from 'react-kinetic-core';
 
 export class FormSample extends Component {
 

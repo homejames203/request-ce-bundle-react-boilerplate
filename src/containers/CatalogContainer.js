@@ -1,5 +1,5 @@
 import { connect } from 'react-refetch';
-import { bundle } from '../lib/kinetic-core';
+import { bundle } from 'react-kinetic-core';
 import { Catalog } from '../components/Catalog';
 
 export const refetchMapper = () => ({
