@@ -13,16 +13,8 @@ export const configureStore = history => {
   // Create the redux store using reducers imported from our 'redux/reducers'
   // module.  Note that we also have some connected react router and redux form
   // setup going on here as well.
-  const store = createStore(
+  return createStore(
     combineReducers({ ...reducers, form, router }),
-    composeEnhancers(applyMiddleware(routerMiddleware(history)), install()),
+    composeEnhancers(install(), applyMiddleware(routerMiddleware(history))),
   );
-  // Enable hot module replacement so that file changes are automatically
-  // communicated to the browser when running in development mode
-  if (module.hot) {
-    module.hot.accept(
-      './reducers',
-      () => store.replaceReducer(combineReducers({ ...reducers, form, router })));
-  }
-  return store;
 };

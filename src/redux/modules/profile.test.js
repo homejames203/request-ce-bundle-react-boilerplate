@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'react-router-redux';
 import { isLoop, getModel, getCmd, Cmd } from 'bdwain-redux-loop';
 import reducer, { actions, defaultState, types } from './profile';
 
@@ -68,5 +69,32 @@ describe('profile redux module', () => {
       const state = reducer(before, actions.fetchProfileError({ response: { status: 500 } }));
       expect(state).toEqual({ loaded: true, failed: true, data: 500 });
     });
+
+    test('UPDATE PROFILE sets saving to true and returns command', () => {
+      const before = { loaded: true, failed: false, saving: false, data: 42 };
+      const state = reducer(before, actions.updateProfile({ value: 'Hello World' }));
+      expect(isLoop(state)).toBeTruthy();
+      expect(getModel(state)).toEqual({ loaded: true, failed: false, saving: true, data: 42 });
+      expect(getCmd(state)).toEqual(Cmd.run(axios, {
+        args: [{ url: 'space/app/api/v1/me', method: 'put', data: { value: 'Hello World' } }],
+        successActionCreator: actions.updateProfileSuccess,
+        failActionCreator: actions.updateProfileError,
+      }));
+    });
+
+    test('UPDATE PROFILE SUCCESS sets saving to false and returns command', () => {
+      const before = { loaded: true, failed: false, saving: true, data: { foo: 'bar' } };
+      const state = reducer(before, actions.updateProfileSuccess({ data: { user: { foo: 'baz' } } }));
+      expect(isLoop(state)).toBeTruthy();
+      expect(getModel(state)).toEqual({ loaded: true, failed: false, saving: false, data: { foo: 'baz' } });
+      expect(getCmd(state)).toEqual(Cmd.action(push('/')));
+    });
+
+    test('UPDATE PROFILE ERROR sets saving to false error and failed to true', () => {
+      const before = { loaded: true, failed: false, saving: true, data: { foo: 'bar' } };
+      const state = reducer(before, actions.updateProfileError({ response: { status: 400 } }));
+      expect(state).toEqual({ loaded: true, failed: true, saving: false, data: 400 });
+    });
+
   });
 });

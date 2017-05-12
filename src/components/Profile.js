@@ -19,32 +19,23 @@ const Field = props =>
     />
   </div>;
 
-export const Profile = ({ loaded, failed, data, fields, handleSubmit }) => {
-  if (!loaded) {
-    return (
-      <div>Loading profile.....</div>
-    );
-  } else if (failed) {
-    return (
-      <div>There was an error loading your profile ({data})</div>
-    );
-  } else {
-    return (
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <label htmlFor="username">Username</label>
-          <Field type="text" id="username" controls={fields.username} />
-        </div>
-        <div>
-          <label htmlFor="displayName">Display Name</label>
-          <Field type="text" id="displayName" controls={fields.displayName} />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field type="email" id="email" controls={fields.email} />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
-};
+export const Profile = ({ loaded, failed, data, fields, handleSubmit }) =>
+  <div>
+    { !loaded && <p>Loading profile information...</p> }
+    { failed && <p>There was an error {data}</p> }
+    <form onSubmit={handleSubmit} noValidate>
+      <div>
+        <label htmlFor="username">Username</label>
+        <Field type="text" id="username" controls={fields.username} />
+      </div>
+      <div>
+        <label htmlFor="displayName">Display Name</label>
+        <Field type="text" id="displayName" controls={fields.displayName} />
+      </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <Field type="email" id="email" controls={fields.email} />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>;

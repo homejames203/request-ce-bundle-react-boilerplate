@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Cmd, loop } from 'bdwain-redux-loop';
 import { bundle } from 'react-kinetic-core';
+import { push } from 'react-router-redux';
 import { dumbAction } from '../actions';
 
 const PROFILE_ENDPOINT = `${bundle.apiLocation()}/me`;
@@ -25,7 +26,7 @@ export const actions = {
   updateProfileError: dumbAction(types.UPDATE_PROFILE_ERROR),
 };
 
-export const defaultState = { loaded: false, failed: false, data: null };
+export const defaultState = { loaded: false, failed: false, saving: false, data: null };
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -44,6 +45,22 @@ const reducer = (state = defaultState, action) => {
       return { loaded: true, failed: false, data: action.payload.data };
     case types.FETCH_PROFILE_ERROR:
       return { loaded: true, failed: true, data: action.payload.response.status };
+    case types.UPDATE_PROFILE:
+      return loop(
+        { ...state, saving: true },
+        Cmd.run(axios, {
+          args: [{ url: PROFILE_ENDPOINT, method: 'put', data: action.payload }],
+          successActionCreator: actions.updateProfileSuccess,
+          failActionCreator: actions.updateProfileError,
+        }),
+      );
+    case types.UPDATE_PROFILE_SUCCESS:
+      return loop(
+        { ...state, saving: false, failed: false, data: action.payload.data.user },
+        Cmd.action(push('/')),
+      );
+    case types.UPDATE_PROFILE_ERROR:
+      return { ...state, saving: false, failed: true, data: action.payload.response.status };
     default: return state;
   }
 };
