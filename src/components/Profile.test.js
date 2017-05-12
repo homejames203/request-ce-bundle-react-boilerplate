@@ -6,6 +6,9 @@ import { Profile } from './Profile';
 
 const props = {
   handleSubmit: jest.fn(),
+  loaded: true,
+  failed: false,
+  data: {},
   fields: {
     username: {},
     displayName: {},
