@@ -95,6 +95,5 @@ describe('profile redux module', () => {
       const state = reducer(before, actions.updateProfileError({ response: { status: 400 } }));
       expect(state).toEqual({ loaded: true, failed: true, saving: false, data: 400 });
     });
-
   });
 });
