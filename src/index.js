@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter } from 'react-router-redux';
 import { createHashHistory } from 'history';
 
 import './globals';

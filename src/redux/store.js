@@ -1,7 +1,7 @@
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
-import promiseMiddleware from 'redux-promise';
-import { reducer as formReducer } from 'redux-form';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { reducer as form } from 'redux-form';
+import { install, combineReducers } from 'bdwain-redux-loop';
+import { routerReducer as router, routerMiddleware } from 'react-router-redux';
 import reducers from './reducers';
 
 export const configureStore = history => {
@@ -14,15 +14,15 @@ export const configureStore = history => {
   // module.  Note that we also have some connected react router and redux form
   // setup going on here as well.
   const store = createStore(
-    connectRouter(history)(combineReducers({ ...reducers, form: formReducer })),
-    composeEnhancers(applyMiddleware(routerMiddleware(history), promiseMiddleware)),
+    combineReducers({ ...reducers, form, router }),
+    composeEnhancers(applyMiddleware(routerMiddleware(history)), install()),
   );
   // Enable hot module replacement so that file changes are automatically
   // communicated to the browser when running in development mode
   if (module.hot) {
     module.hot.accept(
       './reducers',
-      () => store.replaceReducer(connectRouter(history)(combineReducers(reducers))));
+      () => store.replaceReducer(combineReducers({ ...reducers, form, router })));
   }
   return store;
 };
