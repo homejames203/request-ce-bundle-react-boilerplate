@@ -7,7 +7,7 @@ var webpackEnvConfig = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: webpackEnvConfig.entry,
-  devtool: webpackEnvConfig.devTool,
+  devtool: webpackEnvConfig.devtool,
   plugins: webpackEnvConfig.plugins,
   devServer: webpackEnvConfig.devServer,
   output: {
