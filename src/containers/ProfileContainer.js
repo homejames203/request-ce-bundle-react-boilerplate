@@ -3,8 +3,10 @@ import { reduxForm } from 'redux-form';
 import { Profile } from '../components/Profile';
 import { actions } from '../redux/modules/profile';
 
-export const stateMapper = state => ({
-  initialValues: state.profile,
+export const stateMapper = ({ profile }) => ({
+  initialValues: profile.data,
+  loading: profile.loading,
+  apiErrors: profile.errors,
 });
 
 export const dispatchMapper = {
