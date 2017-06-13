@@ -40,7 +40,7 @@ module.exports = {
           switch(err.code) {
             case 'ENOTFOUND':
               message = 'Could not resolve address for ' + err.hostname +
-                '. Double check the kineticWebserver property in config.js';
+                '. Double check the kineticWebserver property in config.js.';
               break;
             case 'ECONNREFUSED':
               message = 'Could not connect to specified kineticWebserver (' +
@@ -56,7 +56,8 @@ module.exports = {
                 'by the application web server.';
               break;
             default:
-              message = 'Got ' + err.code + ' while proxying request to ' + config.kineticWebserver;
+              message = 'Got ' + err.code + ' while proxying request to ' +
+                config.kineticWebserver;
           }
           res.writeHead(502, { 'Content-Type': 'text/plain' });
           res.end(message);
