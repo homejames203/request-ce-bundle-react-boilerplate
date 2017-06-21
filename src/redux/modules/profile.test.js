@@ -35,11 +35,11 @@ describe('profile redux module', () => {
       const errors = ['no worky'];
       const action = actions.fetchProfileError(errors);
       const before = { ...defaultState, loading: true, errors: [] };
-      const after = reducer(defaultState, action);
+      const after = reducer(before, action);
 
       expect(after.loading).toBeFalsy();
       expect(after.errors).toHaveLength(1);
-      expect(after.errors).toContain(errors[0])
+      expect(after.errors).toContain(errors[0]);
     });
 
     test('SET_PROFILE', () => {
