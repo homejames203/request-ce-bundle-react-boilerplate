@@ -65,9 +65,25 @@ export function* createTeamSaga(action) {
   }
 }
 
+export function* deleteTeamSaga(action) {
+  const teamSlug = action.payload;
+  const { errors } = yield call(TeamsAPI.deleteTeam, {
+    teamSlug,
+  });
+
+  if (errors) {
+    yield put(currentActions.setTeamErrors(errors));
+  } else {
+    yield put(allActions.removeTeam(teamSlug));
+    yield put(push('/teams'));
+  }
+}
+
+
 export function* watchTeams() {
   yield takeEvery(allTypes.FETCH_TEAMS, fetchTeamsSaga);
   yield takeEvery(currentTypes.FETCH_TEAM, fetchTeamSaga);
   yield takeEvery(currentTypes.UPDATE_TEAM, updateTeamSaga);
   yield takeEvery(currentTypes.CREATE_TEAM, createTeamSaga);
+  yield takeEvery(currentTypes.DELETE_TEAM, deleteTeamSaga);
 }

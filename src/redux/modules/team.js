@@ -5,6 +5,7 @@ export const types = {
   SET_TEAM_ERRORS: '@kd/boilerplate/SET_TEAM_ERRORS',
   CLEAR_TEAM: '@kd/boilerplate/CLEAR_TEAM',
   CREATE_TEAM: '@kd/boilerplate/CREATE_TEAM',
+  DELETE_TEAM: '@kd/boilerplate/DELETE_TEAM',
 };
 
 export const actions = {
@@ -14,6 +15,7 @@ export const actions = {
   setTeamErrors: errors => ({ type: types.SET_TEAM_ERRORS, payload: errors }),
   clearTeam: () => ({ type: types.CLEAR_TEAM }),
   createTeam: team => ({ type: types.CREATE_TEAM, payload: team }),
+  deleteTeam: teamSlug => ({ type: types.DELETE_TEAM, payload: teamSlug }),
 };
 
 export const defaultState = {
@@ -35,6 +37,8 @@ const reducer = (state = defaultState, action) => {
     case types.CLEAR_TEAM:
       return { ...defaultState };
     case types.CREATE_TEAM:
+      return { ...state, loading: true, errors: [] };
+    case types.DELETE_TEAM:
       return { ...state, loading: true, errors: [] };
     default:
       return state;
