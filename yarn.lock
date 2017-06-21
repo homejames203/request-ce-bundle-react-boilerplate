@@ -3777,6 +3777,10 @@ lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
 
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
+
 lodash.keysin@^3.0.0:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/lodash.keysin/-/lodash.keysin-3.0.8.tgz#22c4493ebbedb1427962a54b445b2c8a767fb47f"
@@ -4937,11 +4941,13 @@ react-hot-loader@3.0.0-beta.6:
     redbox-react "^1.2.5"
     source-map "^0.4.4"
 
-react-kinetic-core@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.1.4.tgz#443771b67e1790d3d58a65c68b78308ee10c07d4"
+react-kinetic-core@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.1.5.tgz#3ab3264e80419a26a5e16abd648034e88005b86e"
   dependencies:
     axios "^0.16.1"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
     react "^15.5.4"
     react-dom "^15.5.4"
     react-redux "^5.0.4"
