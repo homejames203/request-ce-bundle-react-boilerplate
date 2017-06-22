@@ -1,5 +1,6 @@
 import React from 'react';
 import { Seq, Set } from 'immutable';
+import DocumentTitle from 'react-document-title';
 
 const INPUT_PROPS =
   Set(['name', 'onBlur', 'onChange', 'onDragStart', 'onDrop', 'onFocus', 'value']);
@@ -21,7 +22,7 @@ const Field = props =>
   </div>;
 
 export const Profile = ({ handleSubmit, fields, loading, apiErrors }) =>
-  <div>
+  <DocumentTitle title="Profile">
     {loading && <p>Loading profile information...</p>}
     {apiErrors.map(error => <p>{error}</p>)}
     <form onSubmit={handleSubmit} noValidate>
@@ -39,4 +40,4 @@ export const Profile = ({ handleSubmit, fields, loading, apiErrors }) =>
       </div>
       <button type="submit" disabled={loading}>Submit</button>
     </form>
-  </div>;
+  </DocumentTitle>;
