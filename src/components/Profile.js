@@ -17,24 +17,27 @@ const Field = props =>
       {...filterProps(props.controls)}
       type={props.type}
       value={props.controls.value || ''}
+      disabled={props.disabled}
     />
   </div>;
 
-export const Profile = props =>
+export const Profile = ({ handleSubmit, fields, loading, apiErrors }) =>
   <DocumentTitle title="Profile">
-    <form onSubmit={props.handleSubmit} noValidate>
+    {loading && <p>Loading profile information...</p>}
+    {apiErrors.map(error => <p>{error}</p>)}
+    <form onSubmit={handleSubmit} noValidate>
       <div>
         <label htmlFor="username">Username</label>
-        <Field type="text" id="username" controls={props.fields.username} />
+        <Field type="text" id="username" controls={fields.username} disabled={loading} />
       </div>
       <div>
         <label htmlFor="displayName">Display Name</label>
-        <Field type="text" id="displayName" controls={props.fields.displayName} />
+        <Field type="text" id="displayName" controls={fields.displayName} disabled={loading} />
       </div>
       <div>
         <label htmlFor="email">Email</label>
-        <Field type="email" id="email" controls={props.fields.email} />
+        <Field type="email" id="email" controls={fields.email} disabled={loading} />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={loading}>Submit</button>
     </form>
   </DocumentTitle>;

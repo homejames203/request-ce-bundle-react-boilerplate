@@ -11,6 +11,8 @@ const props = {
     displayName: {},
     email: {},
   },
+  loading: false,
+  apiErrors: [],
 };
 
 describe('<Profile />', () => {
