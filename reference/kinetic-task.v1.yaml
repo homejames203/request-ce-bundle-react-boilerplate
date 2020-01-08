@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Kinetic Task
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /access-keys:
+    get:
+      summary: Fetch Access Keys
+      tags: []
+      responses: {}
+      operationId: get-access-keys
+    post:
+      summary: Create a new access key
+      tags: []
+      responses: {}
+      operationId: post-access-keys
+  '/access-keys/{name}/{test}':
+    get:
+      summary: Fetch an access key
+      tags: []
+      responses: {}
+      operationId: get-access-keys-key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+    parameters:
+      - schema:
+          type: string
+        name: name
+        in: path
+        required: true
+        description: ''
+      - schema:
+          type: string
+        name: test
+        in: path
+        required: true
+components:
+  schemas: {}
